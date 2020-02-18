@@ -16,28 +16,36 @@ def num_check(question):
     while not valid:
         try:
             response = float(input(question))
-                print
-            if response <= 0:
 
-            return response
+            if response <= 0:
+                print(error)
+            else:
+                return response
 
         except ValueError:
             print(error)
 
-        if response == "":
-            continue
-        elif has_errors !="":
-            print(error)
-            continue
-        else:
-            return response
-
+serving_size = num_check("What is the recipe serving size? ")
 
 # Main Routine goes here
+dodgy_sf = "yes"
+while dodgy_sf == "yes":
 
-serving_size = num_check("What is the recipe serving size? ")
-desired_size = num_check("How many servings are needed? ")
 
-scale_factor = desired_size / serving_size
+    desired_size = num_check("How many servings are needed? ")
+
+    scale_factor = desired_size / serving_size
+
+    if scale_factor < 0.25:
+        dodgy_sf = input("Warning: This scale factor is very small "
+                      "and you might struggle to accurately weigh "
+                      "the ingredients. \n"
+                      "Do you want to fix this and make more servings? ").lower()
+    elif scale_factor > 4:
+        dodgy_sf = input("Warning: This scale factor is quite large - you might "
+                      "have issues with mixing bowl volumes and oven sapce. \n"
+                      "Do you want to fix this and make a smaller batch? ").lower()
+    else:
+        dodgy_sf = "no"
 
 print("Scale Factor: {}".format(scale_factor))
