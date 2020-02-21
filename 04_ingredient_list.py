@@ -1,6 +1,5 @@
 # Ingredients List
 
-
 # Not blank Function goes here
 def not_blank(question, error_msg, num_ok):
     error = error_msg
@@ -30,17 +29,26 @@ def not_blank(question, error_msg, num_ok):
 # Main Routine...
 
 # Set up empty ingredient list
+ingredients = []
 
 # Look to ask users to enter an ingredient
+stop = ""
+while stop != "xxx":
+    # Ask user for ingredient (via not blank function)
+    get_ingredient = not_blank("Please type in an ingredient name: ",
+                               "This can't be blank",
+                               "yes")
+    # Stop loopin if exit code is typed and there are more than 2 ingredients...
+    if get_ingredient.lower()=="xxx" and len(ingredients) >1:
+        break
+    elif get_ingredient.lower()== "xxx" and len(ingredients) <2:
+        print("You need at least two ingredients in the list. "
+              "Please add more ingredients.")
 
-# Ask user for ingredient (via not blank function)
 
-# If exit code is typed...
+    # If exit code is not entered, add ingredient to list
+    else:
+        ingredients.append(get_ingredient)
 
-# Check that list contains at least two items
-
-# If list contains at least two items break out of loop
-
-# If exit code is not entered, add ingredient to lst
 
 # Output list

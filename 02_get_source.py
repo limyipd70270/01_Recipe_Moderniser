@@ -20,6 +20,7 @@ def not_blank(question, error_msg, num_ok):
                      has_errors = "yes"
                      break
 
+
         if response == "":
             print(error)
         elif has_errors !="":
@@ -27,7 +28,6 @@ def not_blank(question, error_msg, num_ok):
             continue
         else:
             return response
-
 
 # Main Routine goes here
 
