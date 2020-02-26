@@ -8,7 +8,6 @@ def num_check(question):
 
     valid = False
     while not valid:
-        try:
             response = (input(question))
 
             if response.lower() == "xxx":
@@ -18,10 +17,11 @@ def num_check(question):
                 try:
                     if float(response) <=0:
                         print(error)
-                return response
+                    else:
+                        return response
 
-        except ValueError:
-            print(error)
+                except ValueError:
+                    print(error)
 
 # Not Blank Function goes here
 def not_blank(question, error_msg, num_ok):
@@ -52,7 +52,7 @@ def not_blank(question, error_msg, num_ok):
 # Main Routine...
 
 # Replace line below with component 3 in due course...
-scale_factor = float(input("Scale Factor: "))
+scale_factor = eval(input("Scale Factor: "))
 
 # Set up empty ingredient list
 ingredients = []
@@ -83,7 +83,18 @@ while stop != "xxx":
 
         amount = float(amount) * scale_factor
 
+        # Remove decimal point for whole numbers
+        if amount % 1 == 0:
+            amount = int(amount)
+        #
+        elif amount * 10 % 1 ==0:
+            amount = "{:.1f}".format(amount)
+        else:
+            amount = "{:.2f}".format(amount)
+
         ingredients.append ("{} units {}".format(amount, get_ingredient))
 
 
 # Output list
+for item in ingredients:
+    print(item)
