@@ -1,13 +1,15 @@
-# ask user for amount
-# ask user for unit
-# check that unit is in dictionary
-
-# if unit in dictionary, convert to mL
-
-# if no unit given / unit is unknown, leave as is
+# Conversion Function...
 
 
 # ***** Functions go here ******
+def general_converter(how_much, lookup, dictionary, conversion_factor):
+
+    if lookup in dictionary:
+        mult_by = dictionary.get(unit)
+        how_much = how_much * mult_by * conversion_factor
+
+    return how_much
+
 def unit_checker():
 
     unit_tocheck = input ("Unit? ")
@@ -15,6 +17,13 @@ def unit_checker():
     # Abbreviation lists
     teaspoon = ["tsp", "teaspoon", "t"]
     tablespoon = ["tbs", "tablespoon", "T", "tbsp"]
+    ounce = ["oz", "ounce", "fl oz"]
+    cup = ["c"]
+    pint = ["p", "pt", "fl pt"]
+    quart = ["q", "qt", "fl qt"]
+    mls = ["ml", "millilitre", "milliliter"]
+    litre = ["litre", "liter", "l"]
+    pound = ["pound", "lb", "#"]
 
     if unit_tocheck == "":
         print("you chose {}". format(unit_tocheck))
@@ -43,6 +52,9 @@ while keep_going == "":
 
     # Get unit and change it to match dictionary.
     unit = unit_checker()
+
+    amount = general_converter(amount, unit, unit_central, 1)
+    print(amount)
 
     if unit in unit_central:
         mult_by = unit_central.get(unit)
