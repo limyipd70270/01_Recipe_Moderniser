@@ -76,9 +76,11 @@ def get_all_ingredients():
 
     # Loop to ask users to enter an ingredient
     stop = ""
+    print()
     print("Please enter ingredients one line at a time. Press 'xxx' when you are done.")
     while stop != "xxx":
         # Ask user for ingredient (via not blank function)
+        print()
         get_recipe_line = not_blank("Recipe Line: ",
                                     "This can't be blank",
                                     "yes")
@@ -285,6 +287,14 @@ for recipe_line in full_recipe:
     else:
         modernised_recipe.append("{} {}".format(amount, unit_ingredient))
         continue
+
+       # Put updated ingredient in list
+
+print("***** {} *****".format(recipe_name))
+print("Source: {}".format(source))
+print()
+print("***Ingredients (scaled by a factor of {})***".format(scale_factor))
+print()
 
 # Output ingredient list
 for item in modernised_recipe:
