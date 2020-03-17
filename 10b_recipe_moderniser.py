@@ -76,11 +76,9 @@ def get_all_ingredients():
 
     # Loop to ask users to enter an ingredient
     stop = ""
-    print()
     print("Please enter ingredients one line at a time. Press 'xxx' when you are done.")
     while stop != "xxx":
         # Ask user for ingredient (via not blank function)
-        print()
         get_recipe_line = not_blank("Recipe Line: ",
                                     "This can't be blank",
                                     "yes")
@@ -123,11 +121,11 @@ def unit_checker(raw_unit):
     cup = ["c", "cup", "cups"]
     pint = ["p", "pt", "fl pt", "pint", "pints", "fl-pt"]
     quart = ["q", "qt", "fl qt", "quart", "quarts", "fl-qt"]
-    mls = ["ml", "millilitre", "milliliter", "millilitres", "milliliters", "cc"]
+    mls = ["ml", "millilitre", "milliliter", "millilitres", "milliliters", "cc", "mls"]
     litre = ["litre", "liter", "l", "litres", "liters", ]
     pound = ["pound", "lb", "#", "pounds"]
     grams = ["grams", "g", "gram"]
-    dls = ["deciliter", "decilitre", "dl", "deciliters", "decilitres",]
+    dls = ["deciliter", "decilitre", "dl", "deciliters", "decilitres", "dls"]
 
     if unit_tocheck == "":
         #  print("You chose {}".format(unit_tocheck))
@@ -168,7 +166,7 @@ unit_central = {
     "quart": 946,
     "pound": 454,
     "litre": 1000,
-    "ml": 1
+    "mls": 1
 }
 
 # *** Generate food dictionary ***
@@ -287,14 +285,6 @@ for recipe_line in full_recipe:
     else:
         modernised_recipe.append("{} {}".format(amount, unit_ingredient))
         continue
-
-       # Put updated ingredient in list
-
-print("***** {} *****".format(recipe_name))
-print("Source: {}".format(source))
-print()
-print("***Ingredients (scaled by a factor of {})***".format(scale_factor))
-print()
 
 # Output ingredient list
 for item in modernised_recipe:

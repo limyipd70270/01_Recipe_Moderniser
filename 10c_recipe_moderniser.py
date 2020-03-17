@@ -102,7 +102,6 @@ def get_all_ingredients():
 def general_converter(how_much, lookup, dictionary, conversion_factor):
     if lookup in dictionary:
         mult_by = dictionary.get(lookup)
-        print("mult by", mult_by)
         how_much = how_much * float(mult_by) / conversion_factor
         converted = "yes"
 
@@ -286,6 +285,12 @@ for recipe_line in full_recipe:
     else:
         modernised_recipe.append("{} {}".format(amount, unit_ingredient))
         continue
+
+print("***** {} *****".format(recipe_name))
+print("Source: {}".format(source))
+print()
+print("***Ingredients (scaled by a factor of {})***".format(scale_factor))
+print()
 
 # Output ingredient list
 for item in modernised_recipe:
