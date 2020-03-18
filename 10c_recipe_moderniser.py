@@ -49,11 +49,13 @@ def num_check(question):
 
 def get_sf():
     serving_size = num_check("What is the recipe serving size? ")
+    print()
 
     dodgy_sf = "yes"
     while dodgy_sf == "yes":
 
         desired_size = num_check("How many servings are needed? ")
+        print()
 
         scale_factor = desired_size / serving_size
 
@@ -76,12 +78,12 @@ def get_all_ingredients():
 
     # Loop to ask users to enter an ingredient
     stop = ""
-    print("Please enter ingredients one line at a time. Press 'xxx' when you are done.")
     while stop != "xxx":
         # Ask user for ingredient (via not blank function)
-        get_recipe_line = not_blank("Recipe Line: ",
+        get_recipe_line = not_blank("Ingredient: ",
                                     "This can't be blank",
                                     "yes")
+        print()
 
         # Stop loopin if exit code is typed and there are more than 2 ingredients...
         if get_recipe_line.lower() == "xxx" and len(all_ingredients) > 1:
@@ -190,14 +192,31 @@ for row in csv_groceries:
 # set up list to hold original and 'modernised' recipes
 modernised_recipe = []
 
+print("                                     =====RECIPE MODERNISER=====")
+print()
+print("Welcome! This is where you'll be able to change the serving sizes and convert to grams for any recipe.")
+print("Please read the requirements below so you can convert your recipe easily! :) ")
+print()
+print("Requirements: ")
+print("- The recipe name can't can't contain numbers ")
+print("- Don't leave any of your answers blank ")
+print("- Make sure you only enter numbers that are >0, when required ")
+print("- Your desired serving size can't be less than 1/4 or more than 4 times the recipe's original serving size ")
+print("- You need at least two ingredients before you can convert your recipe ")
+print("- Please enter the ingredients one line at a time then press 'xxx' when you are done ")
+print()
+
 # Ask user for recipe name and check its not blank
 recipe_name = not_blank("What is the recipe name? ",
                         "The recipe name can't be blank and can't contain numbers.",
                         "no")
+print()
+
 # Ask user where the recipe is originally from (numbers OK)
 source = not_blank("Where is the recipe from? ",
                    "The recipe source can't be blank.",
                    "yes")
+print()
 
 # Get serving sizes and scale factor
 scale_factor = get_sf()
