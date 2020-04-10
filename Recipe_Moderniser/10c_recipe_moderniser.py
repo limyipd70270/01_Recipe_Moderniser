@@ -101,10 +101,14 @@ def get_all_ingredients():
 
 
 # function to get and check (amount, unit and ingredient)
+# Parameters
+# ----------
+# variable_name : type -- description
 def general_converter(how_much, lookup, dictionary, conversion_factor):
     if lookup in dictionary:
         mult_by = dictionary.get(lookup)
         how_much = how_much * float(mult_by) / conversion_factor
+
         converted = "yes"
 
     else:
@@ -187,7 +191,7 @@ food_dictionary = {}
 for row in csv_groceries:
     food_dictionary[row[0]] = row[1]
 
-# print(food_dictionary)
+#print(food_dictionary)
 
 # set up list to hold original and 'modernised' recipes
 modernised_recipe = []
